@@ -1,5 +1,6 @@
 'use client';
 import './page.css';
+import { useSearchParams } from 'next/navigation';
 import { useId } from 'react';
 
 import { SCOPES } from '@/config/constants';
@@ -30,10 +31,15 @@ function onSubmit(event: React.FormEvent<HTMLFormElement>) {
 }
 
 export default function Home() {
+  const qs = useSearchParams();
   const id = useId();
   const ids = {
     client_id: `${id}--client_id`,
     redirect_uri: `${id}--redirect_uri`,
+  };
+  const defaults = {
+    client_id: qs.get(INPUTS_NAMES.client_id) || '',
+    redirect_uri: qs.get(INPUTS_NAMES.redirect_uri) || '',
   };
 
   return (
@@ -51,6 +57,7 @@ export default function Home() {
                   id={ids.client_id}
                   name={INPUTS_NAMES.client_id}
                   autoComplete="off"
+                  defaultValue={defaults.client_id}
                   required
                 />
               </Form.Field>
@@ -75,6 +82,7 @@ export default function Home() {
                   name={INPUTS_NAMES.redirect_uri}
                   autoComplete="off"
                   placeholder="https://example.org/callback"
+                  defaultValue={defaults.redirect_uri}
                   required
                 />
               </Form.Field>
