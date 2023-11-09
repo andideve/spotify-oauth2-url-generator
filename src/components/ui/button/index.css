@@ -1,0 +1,40 @@
+.button {
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  height: 2.5rem;
+  white-space: nowrap;
+  user-select: none;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  outline: none;
+  border-radius: var(--radii);
+  color: white;
+  background-color: var(--colors-accent);
+}
+.button:focus-visible {
+  outline: 1px solid var(--colors-separator);
+  outline-offset: 0;
+}
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  background-color: currentColor;
+}
+.button:hover:before {
+  opacity: 0.05;
+}
+.button:active:before {
+  opacity: 0;
+}

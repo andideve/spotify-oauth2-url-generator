@@ -1,0 +1,25 @@
+.form,
+.form__fieldset,
+.form__field,
+.form__footer {
+  display: flex;
+  flex-direction: column;
+}
+.form > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 1rem;
+}
+.form__fieldset > :not([hidden]) ~ :not([hidden]),
+.form__field > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 0.5rem;
+}
+.form__legend,
+.form__label {
+  display: inline-block;
+  width: fit-content;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+}
+.form__footer {
+  margin-top: 1.25rem !important;
+}
